@@ -34,6 +34,7 @@ var pokemonRepository = (function () {
   function addListItem(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function () {
       let row = $(".row");
+
       let card = $(
         '<div class="card mt-5" style="width: 18rem; margin:13px;"></div>'
       );
@@ -192,9 +193,11 @@ function search() {
   ul = document.getElementById("myUL");
   // li = ul.getElementsByTagName("");
   li = ul.querySelectorAll(".card");
+  // console.log(li[0].querySelector(".card-body").querySelector(".card-title"));
   for (i = 0; i < li.length; i++) {
     // a = li[i].getElementsByTagName("a")[0];
-    a = li[i].querySelector(".card-body").querySelector(".card-title")[0];
+    a = li[i].querySelector(".card-body").querySelector(".card-title");
+    console.log(a.innerText);
     txtValue = a.textContent || a.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       li[i].style.display = "";
